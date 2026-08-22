@@ -1,0 +1,15 @@
+[Unit]
+Description=Tower vault-search MCP server (Streamable HTTP, localhost-only)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/tower
+EnvironmentFile=%h/.config/tower/env
+Environment=TOWER_INDEX_PATH=%h/.local/share/tower/index/vault.db
+ExecStart=%h/tower/.venv/bin/python %h/tower/server.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
