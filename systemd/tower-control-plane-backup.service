@@ -1,0 +1,11 @@
+[Unit]
+Description=Verified snapshot of Alpha control-plane SQLite state
+After=nexus-model-usage.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/tower/scripts/control_plane_backup.py --keep-days 14
+ExecStartPost=%h/tower/scripts/control_plane_offhost_sync.py
+Nice=10
+IOSchedulingClass=idle
+UMask=0077

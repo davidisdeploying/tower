@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly verified Alpha control-plane SQLite snapshot
+
+[Timer]
+OnCalendar=*-*-* 04:05:00 America/Chicago
+Persistent=true
+RandomizedDelaySec=5m
+Unit=tower-control-plane-backup.service
+
+[Install]
+WantedBy=timers.target
